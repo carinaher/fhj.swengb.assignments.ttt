@@ -40,7 +40,6 @@ class TicTacToeApp extends javafx.application.Application {
 }
 
 class TicTacToeAppController extends Initializable {
-
     @FXML var topLeft: Button = _
     @FXML var topCenter: Button = _
     @FXML var topRight: Button = _
@@ -51,11 +50,24 @@ class TicTacToeAppController extends Initializable {
     @FXML var bottomCenter: Button = _
     @FXML var bottomRight: Button = _
 
+  /*
+    val seperator = "|---|---|---|\n"
+    val board = List(TopLeft.idx,TopCenter.idx,TopRight.idx,
+      MiddleLeft.idx,MiddleCenter.idx,MiddleRight.idx,
+      BottomLeft.idx,BottomCenter.idx,BottomRight.idx)
+
+    print(seperator +
+      "|-"+board(0)+"-|-"+board(1)+"-|-"+board(2)+"-|\n"+
+      seperator +
+      "|-"+board(3)+"-|-"+board(4)+"-|-"+board(5)+"-|\n"+
+      seperator +
+      "|-"+board(6)+"-|-"+board(7)+"-|-"+board(8)+"-|\n"+
+      seperator)
+      */
 
     override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
     }
-
 
   def reset(): Unit = {
     topLeft.setText(" ")
@@ -67,7 +79,6 @@ class TicTacToeAppController extends Initializable {
     bottomLeft.setText(" ")
     bottomCenter.setText(" ")
     bottomRight.setText(" ")
-
   }
 
   def click0(): Unit = topLeft.setText("X")
@@ -79,18 +90,5 @@ class TicTacToeAppController extends Initializable {
   def click6(): Unit = bottomLeft.setText("X")
   def click7(): Unit = bottomCenter.setText("X")
   def click8(): Unit = bottomRight.setText("X")
-
-  val seperator = "|---|---|---|\n"
-  val board = List(TopLeft.idx,TopCenter.idx,TopRight.idx,
-    MiddleLeft.idx,MiddleCenter.idx,MiddleRight.idx,
-    BottomLeft.idx,BottomCenter.idx,BottomRight.idx)
-
-  print(seperator +
-    "|-"+board(0)+"-|-"+board(1)+"-|-"+board(2)+"-|\n"+
-    seperator +
-    "|-"+board(3)+"-|-"+board(4)+"-|-"+board(5)+"-|\n"+
-    seperator +
-    "|-"+board(6)+"-|-"+board(7)+"-|-"+board(8)+"-|\n"+
-    seperator)
 
 }

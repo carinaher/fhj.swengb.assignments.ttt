@@ -76,6 +76,7 @@ object TicTacToe {
     */
   def play(t: TicTacToe, moves: Seq[TMove]): TicTacToe = ???
 
+
   /**
     * creates all possible games.
     *
@@ -118,22 +119,8 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * @return
     */
-  def asString(): String = { ???
+  def asString(): String = ???
 
-    /*val seperator = "|---|---|---|\n"
-    val board = List(TopLeft.idx,TopCenter.idx,TopRight.idx,
-      MiddleLeft.idx,MiddleCenter.idx,MiddleRight.idx,
-      BottomLeft.idx,BottomCenter.idx,BottomRight.idx)
-
-    seperator +
-      "|-"+board(0)+"-|-"+board(1)+"-|-"+board(2)+"-|\n"+
-      seperator +
-      "|-"+board(3)+"-|-"+board(4)+"-|-"+board(5)+"-|\n"+
-      seperator +
-      "|-"+board(6)+"-|-"+board(7)+"-|-"+board(8)+"-|\n"+
-      seperator
-      */
-  }
 
 
   /**
@@ -143,10 +130,12 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     */
   val gameOver : Boolean = ???
 
+
+
   /**
     * the moves which are still to be played on this tic tac toe.
     */
-  val remainingMoves: Set[TMove] = Set(TopLeft,TopCenter,TopRight,MiddleLeft,MiddleCenter,MiddleRight,BottomLeft,BottomCenter,BottomRight)
+  val remainingMoves: Set[TMove] = ???
 
   /**
     * given a tic tac toe game, this function returns all
@@ -162,6 +151,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     */
   def winner: Option[(Player, Set[TMove])] = ???
 
+
   /**
     * returns a copy of the current game, but with the move applied to the tic tac toe game.
     *
@@ -170,6 +160,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @return
     */
   def turn(p: TMove, player: Player): TicTacToe = ???
+
 
 }
 
