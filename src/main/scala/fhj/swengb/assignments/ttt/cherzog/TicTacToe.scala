@@ -57,13 +57,20 @@ case object PlayerA extends Player
 
 case object PlayerB extends Player
 
+
+
+
 object TicTacToe {
+
+  val board = Set(TopLeft,TopCenter,TopRight,MiddleLeft,MiddleCenter,MiddleRight,BottomLeft,BottomCenter,BottomRight)
+  println(board)
 
   /**
     * creates an empty tic tac toe game
+    *
     * @return
     */
-  def apply(): TicTacToe = ???
+  def apply(): TicTacToe = TicTacToe()
 
   /**
     * For a given tic tac toe game, this function applies all moves to the game.
@@ -77,6 +84,7 @@ object TicTacToe {
 
   /**
     * creates all possible games.
+    *
     * @return
     */
   def mkGames(): Map[Seq[TMove], TicTacToe] = ???
@@ -104,10 +112,10 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * | x | o | o |
     * |---|---|---|
     *
-    *
     * @return
     */
   def asString(): String = ???
+
 
   /**
     * is true if the game is over.
