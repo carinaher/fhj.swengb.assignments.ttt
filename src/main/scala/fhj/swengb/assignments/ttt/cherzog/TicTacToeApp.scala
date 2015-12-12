@@ -5,7 +5,7 @@ package fhj.swengb.assignments.ttt.cherzog
   */
 
 
-object playTicTacToe {
+object TicTacToeApp {
 
   def main(args: Array[String]) {
     println("hello world")
