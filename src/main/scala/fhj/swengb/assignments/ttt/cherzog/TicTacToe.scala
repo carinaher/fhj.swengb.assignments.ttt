@@ -57,13 +57,7 @@ case object PlayerA extends Player
 
 case object PlayerB extends Player
 
-
-
-
 object TicTacToe {
-
-  val board = Set(TopLeft,TopCenter,TopRight,MiddleLeft,MiddleCenter,MiddleRight,BottomLeft,BottomCenter,BottomRight)
-  println(board)
 
   /**
     * creates an empty tic tac toe game
@@ -87,7 +81,17 @@ object TicTacToe {
     *
     * @return
     */
-  def mkGames(): Map[Seq[TMove], TicTacToe] = ???
+  def mkGames(): Map[Seq[TMove], TicTacToe] = {
+    val games = Seq((TopLeft, TopCenter, TopRight),
+      (MiddleLeft, MiddleCenter, MiddleRight),
+      (BottomLeft, BottomCenter, BottomRight),
+      (TopLeft, MiddleLeft, BottomLeft),
+      (TopCenter, MiddleCenter, BottomCenter),
+      (TopRight, MiddleRight, BottomRight),
+      (TopLeft, MiddleCenter, BottomRight),
+      (TopRight, MiddleCenter, BottomLeft))
+    mkGames()
+  }
 
 }
 
@@ -114,7 +118,22 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * @return
     */
-  def asString(): String = ???
+  def asString(): String = { ???
+
+    /*val seperator = "|---|---|---|\n"
+    val board = List(TopLeft.idx,TopCenter.idx,TopRight.idx,
+      MiddleLeft.idx,MiddleCenter.idx,MiddleRight.idx,
+      BottomLeft.idx,BottomCenter.idx,BottomRight.idx)
+
+    seperator +
+      "|-"+board(0)+"-|-"+board(1)+"-|-"+board(2)+"-|\n"+
+      seperator +
+      "|-"+board(3)+"-|-"+board(4)+"-|-"+board(5)+"-|\n"+
+      seperator +
+      "|-"+board(6)+"-|-"+board(7)+"-|-"+board(8)+"-|\n"+
+      seperator
+      */
+  }
 
 
   /**
@@ -127,7 +146,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
   /**
     * the moves which are still to be played on this tic tac toe.
     */
-  val remainingMoves: Set[TMove] = ???
+  val remainingMoves: Set[TMove] = Set(TopLeft,TopCenter,TopRight,MiddleLeft,MiddleCenter,MiddleRight,BottomLeft,BottomCenter,BottomRight)
 
   /**
     * given a tic tac toe game, this function returns all
@@ -153,5 +172,4 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
   def turn(p: TMove, player: Player): TicTacToe = ???
 
 }
-
 
