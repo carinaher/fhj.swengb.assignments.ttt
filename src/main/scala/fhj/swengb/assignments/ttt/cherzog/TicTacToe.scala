@@ -57,6 +57,8 @@ case object PlayerA extends Player
 
 case object PlayerB extends Player
 
+case object emptyPlayer extends Player  // empty player is necessary for the empty game
+
 object TicTacToe {
 
   /**
@@ -64,7 +66,10 @@ object TicTacToe {
     *
     * @return
     */
-  def apply(): TicTacToe = TicTacToe()
+  def apply(): TicTacToe = TicTacToe(Map((TopLeft,emptyPlayer),(TopCenter, emptyPlayer),(TopRight, emptyPlayer),
+    (MiddleLeft, emptyPlayer),(MiddleCenter, emptyPlayer),(MiddleRight, emptyPlayer),
+    (BottomLeft, emptyPlayer),(BottomCenter, emptyPlayer),(BottomRight, emptyPlayer)))
+
 
   /**
     * For a given tic tac toe game, this function applies all moves to the game.
