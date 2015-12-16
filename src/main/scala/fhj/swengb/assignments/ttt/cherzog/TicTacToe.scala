@@ -164,7 +164,16 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @param player the player
     * @return
     */
-  def turn(p: TMove, player: Player): TicTacToe = ???
+  def turn(p: TMove, player: Player): TicTacToe = {
+    if(moveHistory.get(p).contains(emptyPlayer)){
+      if (player.equals(PlayerA))
+        TicTacToe((moveHistory + (p -> player)), PlayerB)
+      else
+        TicTacToe((moveHistory + (p -> player)), PlayerA)
+    }
+    else{
+      TicTacToe(moveHistory)
+    }
 
 
 }
