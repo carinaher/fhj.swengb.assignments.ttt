@@ -57,8 +57,6 @@ case object PlayerA extends Player
 
 case object PlayerB extends Player
 
-case object emptyPlayer extends Player  // empty player is necessary for the empty game
-
 object TicTacToe {
 
   /**
@@ -66,9 +64,7 @@ object TicTacToe {
     *
     * @return
     */
-  def apply(): TicTacToe = TicTacToe(Map((TopLeft,emptyPlayer),(TopCenter, emptyPlayer),(TopRight, emptyPlayer),
-    (MiddleLeft, emptyPlayer),(MiddleCenter, emptyPlayer),(MiddleRight, emptyPlayer),
-    (BottomLeft, emptyPlayer),(BottomCenter, emptyPlayer),(BottomRight, emptyPlayer)))
+  def apply(): TicTacToe = TicTacToe(Map())
 
 
   /**
@@ -79,7 +75,22 @@ object TicTacToe {
     * @param moves
     * @return
     */
-  def play(t: TicTacToe, moves: Seq[TMove]): TicTacToe = ???
+  def play(t: TicTacToe, moves: Seq[TMove]): TicTacToe = {
+
+    var player:Player = PlayerA
+
+    for(move <- moves){
+      t.turn(move, player)
+
+      if(player.equals(PlayerA))
+        player = PlayerB
+      else
+        player = PlayerA
+    }
+
+    return t
+  }
+
 
 
   /**
@@ -88,16 +99,16 @@ object TicTacToe {
     * @return
     */
   def mkGames(): Map[Seq[TMove], TicTacToe] = {
-    val games = Seq((TopLeft, TopCenter, TopRight),
-      (MiddleLeft, MiddleCenter, MiddleRight),
-      (BottomLeft, BottomCenter, BottomRight),
-      (TopLeft, MiddleLeft, BottomLeft),
-      (TopCenter, MiddleCenter, BottomCenter),
-      (TopRight, MiddleRight, BottomRight),
-      (TopLeft, MiddleCenter, BottomRight),
-      (TopRight, MiddleCenter, BottomLeft))
-    mkGames()
+
+    val allGames : Map[Seq[TMove], TicTacToe] = Map()
+
+
+    ???
+
+
+    return allGames
   }
+
 
 }
 
@@ -125,21 +136,25 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @return
     */
   def asString(): String = {
+    var board: String =
+      "|---|---|---|\n" +
+      "|   |   |   |\n" +
+      "|---|---|---|\n" +
+      "|   |   |   |\n" +
+      "|---|---|---|\n" +
+      "|   |   |   |\n" +
+      "|---|---|---|\n"
 
-    val seperator = "|---|---|---|\n"
-    val board = List(TopLeft.idx,TopCenter.idx,TopRight.idx,
-      MiddleLeft.idx,MiddleCenter.idx,MiddleRight.idx,
-      BottomLeft.idx,BottomCenter.idx,BottomRight.idx)
+    val pos = Map(0->16, 1->20, 2->24, 3->44, 4->48, 5->52, 6->72, 7->76, 8->80)
 
-    seperator +
-      "|-"+board(0)+"-|-"+board(1)+"-|-"+board(2)+"-|\n"+
-      seperator +
-      "|-"+board(3)+"-|-"+board(4)+"-|-"+board(5)+"-|\n"+
-      seperator +
-      "|-"+board(6)+"-|-"+board(7)+"-|-"+board(8)+"-|\n"+
-      seperator)
-}
-
+    for((move, player) <- moveHistory) {
+      if (player == PlayerA)
+        board = board.updated(pos(move.idx), "X").mkString
+      else if (player == PlayerB)
+        board = board.updated(pos(move.idx), "O").mkString
+    }
+    board
+  }
 
 
   /**
@@ -158,7 +173,10 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
   /**
     * the moves which are still to be played on this tic tac toe.
     */
-  val remainingMoves: Set[TMove] = moveHistory.filter(_._2.equals(emptyPlayer)).keySet
+  val remainingMoves: Set[TMove] = {
+    val allMoves: Set[TMove] = Set(TopLeft, TopCenter, TopRight, MiddleLeft, MiddleCenter, MiddleRight, BottomLeft, BottomCenter, BottomRight)
+    for(move <- allMoves if !moveHistory.contains(move)) yield move
+  }
 
   /**
     * given a tic tac toe game, this function returns all
@@ -172,7 +190,27 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * The set of moves contains all moves which contributed to the result.
     */
-  def winner: Option[(Player, Set[TMove])] = ???
+  def winner: Option[(Player, Set[TMove])] = {
+    val winnerLines = List((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6))
+    val movesA: List[Int] = List()
+    val movesB: List[Int] = List()
+
+    for(move <- moveHistory){
+      if(moveHistory.get(move._1).contains(PlayerA))
+        movesA.apply(move._1.idx)
+      else
+        movesB.apply(move._1.idx)
+    }
+
+    for(wl <- winnerLines){
+      if(movesA.contains(wl._1) && movesA.contains(wl._2) && movesA.contains(wl._3))
+        Some(PlayerA, moveHistory)
+      else if(movesB.contains(wl._1) && movesB.contains(wl._2) && movesB.contains(wl._3))
+        Some(PlayerB, moveHistory)
+    }
+    None
+  }
+
 
 
   /**
@@ -182,17 +220,16 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @param player the player
     * @return
     */
-  def turn(p: TMove, player: Player): TicTacToe = {
-    if(moveHistory.get(p).contains(emptyPlayer)){
+  def turn(move: TMove, player: Player): TicTacToe = {
+    if (moveHistory.contains(move)) {
       if (player.equals(PlayerA))
-        TicTacToe((moveHistory + (p -> player)), PlayerB)
+        TicTacToe((moveHistory + (move -> player)), PlayerB)
       else
-        TicTacToe((moveHistory + (p -> player)), PlayerA)
+        TicTacToe((moveHistory + (move -> player)))
     }
-    else{
+    else {
       TicTacToe(moveHistory)
     }
 
-
+  }
 }
-
