@@ -133,14 +133,18 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * The game is over if either of a player wins or there is a draw.
     */
-  val gameOver : Boolean = ???
+  val gameOver : Boolean =
+    if(winner == None)
+      false
+    else
+      true
 
 
 
   /**
     * the moves which are still to be played on this tic tac toe.
     */
-  val remainingMoves: Set[TMove] = ???
+  val remainingMoves: Set[TMove] = moveHistory.filter(_._2.equals(emptyPlayer)).keySet
 
   /**
     * given a tic tac toe game, this function returns all
