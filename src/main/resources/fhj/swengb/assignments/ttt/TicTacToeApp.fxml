@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="412.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.assignments.ttt.cherzog.TicTacToeAppController">
+<BorderPane prefHeight="595.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.assignments.ttt.cherzog.TicTacToeAppController">
    <center>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane fx:id="gridPane" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -61,14 +61,52 @@
          </children>
       </GridPane>
    </center>
-   <left>
-      <VBox prefHeight="412.0" prefWidth="170.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="newgame" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#reset" text="New Game" />
-         </children>
-      </VBox>
-   </left>
    <top>
-      <Label minHeight="80.0" text="Active Player: " BorderPane.alignment="CENTER" />
+      <GridPane prefHeight="128.0" prefWidth="692.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="newgame" mnemonicParsing="false" onAction="#reset" text="New Game" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="30.0" />
+               </font></Button>
+            <Label fx:id="playerWon" alignment="CENTER" prefHeight="35.0" prefWidth="342.0" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font></Label>
+         </children>
+      </GridPane>
    </top>
+   <bottom>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="345.0" text="Active Player:" GridPane.rowIndex="1">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+            <Label fx:id="activePlayer" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+         </children>
+      </GridPane>
+   </bottom>
 </BorderPane>

@@ -6,6 +6,7 @@ import javafx.application.Application
 import javafx.fxml.{FXML, Initializable, FXMLLoader}
 import javafx.scene.control.{Label, Button}
 import javafx.scene.image.Image
+import javafx.scene.layout.GridPane
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
@@ -50,38 +51,66 @@ class TicTacToeAppController extends Initializable {
     @FXML var bottomLeft: Button = _
     @FXML var bottomCenter: Button = _
     @FXML var bottomRight: Button = _
+    @FXML var gridPane: GridPane = _
+    @FXML var activePlayer: Label = _
+    @FXML var playerWon: Label = _
+
 
     override def initialize(location: URL, resources: ResourceBundle): Unit = {
-
+      activePlayer.setText("PlayerA")
     }
 
   def reset(): Unit = {
-    TicTacToe.apply()
-    topLeft.setText(" ")
-    topCenter.setText(" ")
-    topRight.setText(" ")
-    middleLeft.setText(" ")
-    middleCenter.setText(" ")
-    middleRight.setText(" ")
-    bottomLeft.setText(" ")
-    bottomCenter.setText(" ")
-    bottomRight.setText(" ")
+    game = TicTacToe()
+    gridPane.setDisable(false)
+    playerWon.setText("")
+
+
+    topLeft.setText("")
+    topCenter.setText("")
+    topRight.setText("")
+    middleLeft.setText("")
+    middleCenter.setText("")
+    middleRight.setText("")
+    bottomLeft.setText("")
+    bottomCenter.setText("")
+    bottomRight.setText("")
 
   }
 
-  var game = TicTacToe.apply()
+  var game = TicTacToe()
+  var newgame = game
 
-  def playMoves(move: TMove, currentgame:TicTacToe = game, buttonClicked: Button):TicTacToe = {
+  def playMoves(move: TMove, lastgame:TicTacToe = game, buttonClicked: Button):TicTacToe = {
 
-    if(currentgame.nextPlayer.equals(PlayerA))
-      buttonClicked.setText("X")
-    else
-      buttonClicked.setText("O")
+    if(buttonClicked.getText == "") {
+      if(lastgame.nextPlayer.equals(PlayerA)) {
+        buttonClicked.setText("X")
+      }
+      else {
+        buttonClicked.setText("O")
+      }
 
-    val newgame = currentgame.turn(move, currentgame.nextPlayer)
-    println(newgame.asString())
+      activePlayer.setText(lastgame.nextPlayer.toString)
+
+      newgame = lastgame.turn(move, lastgame.nextPlayer)
+      println(newgame.asString())
+
+      if(newgame.gameOver) {
+        gridPane.setDisable(true)
+
+        if(newgame.winner.isDefined) {
+          playerWon.setText(lastgame.nextPlayer.toString + " " + "won!")
+        }
+        else
+          playerWon.setText("It's a draw!")
+      }
+      else if(game.moveHistory.size == 9)
+        gridPane.setDisable(true)
+    }
     newgame
   }
+
 
   def playTL(): Unit = {
     val newgame = playMoves(TopLeft,game, topLeft); game = newgame

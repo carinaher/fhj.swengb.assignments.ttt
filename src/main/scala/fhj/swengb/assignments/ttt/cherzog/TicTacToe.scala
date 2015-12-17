@@ -151,11 +151,9 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     for((move, player) <- moveHistory) {
       if (player == PlayerA) {
         board = board.updated(pos(move.idx), "X").mkString
-        //println("Player A" + board)
       }
       else if (player == PlayerB) {
         board = board.updated(pos(move.idx), "O").mkString
-        //println("Player B" + board)
       }
     }
 
@@ -170,10 +168,10 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * The game is over if either of a player wins or there is a draw.
     */
   val gameOver : Boolean =
-    if(winner == None)
-      false
-    else
+    if(winner != None || moveHistory.size == 9)
       true
+    else
+      false
 
 
 
@@ -213,11 +211,11 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
 
     for (wl <- winnerLines) {
       if (movesA.contains(wl._1) && movesA.contains(wl._2) && movesA.contains(wl._3)) {
-        println("Player A won")
+        println("Player A won!")
         return Some(PlayerA, moveHistory.keySet)
       }
       else if (movesB.contains(wl._1) && movesB.contains(wl._2) && movesB.contains(wl._3)) {
-        println("Player B won")
+        println("Player B won!")
         return Some(PlayerB, moveHistory.keySet)
       }
     }
