@@ -57,13 +57,14 @@ class TicTacToeAppController extends Initializable {
 
 
     override def initialize(location: URL, resources: ResourceBundle): Unit = {
-      activePlayer.setText("PlayerA")
+      activePlayer.setText("It's PlayerA's turn!")
     }
 
   def reset(): Unit = {
     game = TicTacToe()
     gridPane.setDisable(false)
     playerWon.setText("")
+    activePlayer.setText("It's PlayerA's turn!")
 
 
     topLeft.setText("")
@@ -91,13 +92,15 @@ class TicTacToeAppController extends Initializable {
         buttonClicked.setText("O")
       }
 
-      activePlayer.setText(lastgame.nextPlayer.toString)
+
 
       newgame = lastgame.turn(move, lastgame.nextPlayer)
+      activePlayer.setText("It's " + newgame.nextPlayer.toString +"'s turn!")
       println(newgame.asString())
 
       if(newgame.gameOver) {
         gridPane.setDisable(true)
+        activePlayer.setText("")
 
         if(newgame.winner.isDefined) {
           playerWon.setText(lastgame.nextPlayer.toString + " " + "won!")

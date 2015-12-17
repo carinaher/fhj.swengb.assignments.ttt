@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="595.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.assignments.ttt.cherzog.TicTacToeAppController">
+<BorderPane prefHeight="595.0" prefWidth="692.0" stylesheets="@TicTacToeApp.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.assignments.ttt.cherzog.TicTacToeAppController">
    <center>
       <GridPane fx:id="gridPane" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -21,39 +21,39 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="topLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playTL" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="topLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playTL" stylesheets="@TicTacToeApp.css" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="topCenter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playTC" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="topCenter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playTC" stylesheets="@TicTacToeApp.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="topRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playTR" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="topRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playTR" stylesheets="@TicTacToeApp.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="middleLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playML" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="middleLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playML" stylesheets="@TicTacToeApp.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="middleCenter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playMC" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="middleCenter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playMC" stylesheets="@TicTacToeApp.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="middleRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playMR" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="middleRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playMR" stylesheets="@TicTacToeApp.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="bottomLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playBL" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="bottomLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playBL" stylesheets="@TicTacToeApp.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="bottomCenter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playBC" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="bottomCenter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playBC" stylesheets="@TicTacToeApp.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
-            <Button fx:id="bottomRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playBR" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="bottomRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playBR" stylesheets="@TicTacToeApp.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font></Button>
@@ -62,7 +62,7 @@
       </GridPane>
    </center>
    <top>
-      <GridPane prefHeight="128.0" prefWidth="692.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="128.0" prefWidth="692.0" stylesheets="@TicTacToeApp.css" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -74,11 +74,11 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="newgame" mnemonicParsing="false" onAction="#reset" text="New Game" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="newgame" mnemonicParsing="false" onAction="#reset" styleClass="green" stylesheets="@TicTacToeApp.css" text="New Game" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Label fx:id="playerWon" alignment="CENTER" prefHeight="35.0" prefWidth="342.0" GridPane.rowIndex="1">
+            <Label fx:id="playerWon" alignment="CENTER" prefHeight="35.0" prefWidth="342.0" styleClass="white" stylesheets="@TicTacToeApp.css" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font></Label>
@@ -86,11 +86,10 @@
       </GridPane>
    </top>
    <bottom>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane stylesheets="@TicTacToeApp.css" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -98,15 +97,21 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="35.0" prefWidth="345.0" text="Active Player:" GridPane.rowIndex="1">
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="345.0" styleClass="white" stylesheets="@TicTacToeApp.css" text="Active Player:" GridPane.rowIndex="1">
                <font>
                   <Font size="30.0" />
                </font></Label>
-            <Label fx:id="activePlayer" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="activePlayer" maxWidth="1.7976931348623157E308" styleClass="white" stylesheets="@TicTacToeApp.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="30.0" />
                </font></Label>
          </children>
       </GridPane>
    </bottom>
+   <left>
+      <Pane prefHeight="377.0" prefWidth="143.0" stylesheets="@TicTacToeApp.css" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="377.0" prefWidth="138.0" stylesheets="@TicTacToeApp.css" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
