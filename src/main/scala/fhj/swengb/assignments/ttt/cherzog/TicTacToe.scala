@@ -1,6 +1,7 @@
 package fhj.swengb.assignments.ttt.cherzog
 
 import scala.collection.Set
+import scala.collection.mutable.MutableList
 
 /**
   * models the different moves the game allows
@@ -148,12 +149,18 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     val pos = Map(0->16, 1->20, 2->24, 3->44, 4->48, 5->52, 6->72, 7->76, 8->80)
 
     for((move, player) <- moveHistory) {
-      if (player == PlayerA)
+      if (player == PlayerA) {
         board = board.updated(pos(move.idx), "X").mkString
-      else if (player == PlayerB)
+        //println("Player A" + board)
+      }
+      else if (player == PlayerB) {
         board = board.updated(pos(move.idx), "O").mkString
+        //println("Player B" + board)
+      }
     }
+
     board
+
   }
 
 
@@ -191,26 +198,31 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * The set of moves contains all moves which contributed to the result.
     */
   def winner: Option[(Player, Set[TMove])] = {
-    val winnerLines = List((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6))
-    val movesA: List[Int] = List()
-    val movesB: List[Int] = List()
+    val winnerLines = List((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
+    var movesA: MutableList[Int] = MutableList()
+    var movesB: MutableList[Int] = MutableList()
 
-    for(move <- moveHistory){
-      if(moveHistory.get(move._1).contains(PlayerA))
-        movesA.apply(move._1.idx)
-      else
-        movesB.apply(move._1.idx)
+    for (move <- moveHistory) {
+      if (move._2.equals(PlayerA)) {
+        movesA += move._1.idx
+      }
+      else {
+        movesB += move._1.idx
+      }
     }
 
-    for(wl <- winnerLines){
-      if(movesA.contains(wl._1) && movesA.contains(wl._2) && movesA.contains(wl._3))
-        Some(PlayerA, moveHistory)
-      else if(movesB.contains(wl._1) && movesB.contains(wl._2) && movesB.contains(wl._3))
-        Some(PlayerB, moveHistory)
+    for (wl <- winnerLines) {
+      if (movesA.contains(wl._1) && movesA.contains(wl._2) && movesA.contains(wl._3)) {
+        println("Player A won")
+        return Some(PlayerA, moveHistory.keySet)
+      }
+      else if (movesB.contains(wl._1) && movesB.contains(wl._2) && movesB.contains(wl._3)) {
+        println("Player B won")
+        return Some(PlayerB, moveHistory.keySet)
+      }
     }
     None
   }
-
 
 
   /**
@@ -221,12 +233,17 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @return
     */
   def turn(move: TMove, player: Player): TicTacToe = {
-    if (moveHistory.contains(move)) {
-      if (player.equals(PlayerA))
-        TicTacToe((moveHistory + (move -> player)), PlayerB)
-      else
-        TicTacToe((moveHistory + (move -> player)))
+    if (!moveHistory.contains(move)) {
+      if (player.equals(PlayerA)) {
+        println("A")
+        TicTacToe(moveHistory + (move -> player), PlayerB)
+      }
+      else {
+        println("B")
+        TicTacToe(moveHistory + (move -> player), PlayerA)
+      }
     }
+
     else {
       TicTacToe(moveHistory)
     }

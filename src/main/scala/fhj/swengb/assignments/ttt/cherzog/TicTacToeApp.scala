@@ -19,6 +19,7 @@ import scala.util.control.NonFatal
 object TicTacToeApp {
   def main(args: Array[String]) {
     Application.launch(classOf[TicTacToeApp], args: _*)
+
   }
 }
 
@@ -50,26 +51,12 @@ class TicTacToeAppController extends Initializable {
     @FXML var bottomCenter: Button = _
     @FXML var bottomRight: Button = _
 
-  /*
-    val seperator = "|---|---|---|\n"
-    val board = List(TopLeft.idx,TopCenter.idx,TopRight.idx,
-      MiddleLeft.idx,MiddleCenter.idx,MiddleRight.idx,
-      BottomLeft.idx,BottomCenter.idx,BottomRight.idx)
-
-    print(seperator +
-      "|-"+board(0)+"-|-"+board(1)+"-|-"+board(2)+"-|\n"+
-      seperator +
-      "|-"+board(3)+"-|-"+board(4)+"-|-"+board(5)+"-|\n"+
-      seperator +
-      "|-"+board(6)+"-|-"+board(7)+"-|-"+board(8)+"-|\n"+
-      seperator)
-      */
-
     override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
     }
 
   def reset(): Unit = {
+    TicTacToe.apply()
     topLeft.setText(" ")
     topCenter.setText(" ")
     topRight.setText(" ")
@@ -79,16 +66,57 @@ class TicTacToeAppController extends Initializable {
     bottomLeft.setText(" ")
     bottomCenter.setText(" ")
     bottomRight.setText(" ")
+
   }
 
-  def click0(): Unit = topLeft.setText("X")
-  def click1(): Unit = topCenter.setText("X")
-  def click2(): Unit = topRight.setText("X")
-  def click3(): Unit = middleLeft.setText("X")
-  def click4(): Unit = middleCenter.setText("X")
-  def click5(): Unit = middleRight.setText("X")
-  def click6(): Unit = bottomLeft.setText("X")
-  def click7(): Unit = bottomCenter.setText("X")
-  def click8(): Unit = bottomRight.setText("X")
+  var game = TicTacToe.apply()
+
+  def playMoves(move: TMove, currentgame:TicTacToe = game, buttonClicked: Button):TicTacToe = {
+
+    if(currentgame.nextPlayer.equals(PlayerA))
+      buttonClicked.setText("X")
+    else
+      buttonClicked.setText("O")
+
+    val newgame = currentgame.turn(move, currentgame.nextPlayer)
+    println(newgame.asString())
+    newgame
+  }
+
+  def playTL(): Unit = {
+    val newgame = playMoves(TopLeft,game, topLeft); game = newgame
+}
+
+  def playTC(): Unit = {
+    val newgame = playMoves(TopCenter,game, topCenter); game = newgame
+  }
+
+  def playTR(): Unit = {
+    val newgame = playMoves(TopRight,game, topRight); game = newgame
+  }
+
+  def playML(): Unit = {
+    val newgame = playMoves(MiddleLeft,game, middleLeft); game = newgame
+  }
+
+  def playMC(): Unit = {
+    val newgame = playMoves(MiddleCenter,game, middleCenter); game = newgame
+  }
+
+  def playMR(): Unit = {
+    val newgame = playMoves(MiddleRight,game, middleRight); game = newgame
+  }
+
+  def playBL(): Unit = {
+    val newgame = playMoves(BottomLeft,game, bottomLeft); game = newgame
+  }
+
+  def playBC(): Unit = {
+    val newgame = playMoves(BottomCenter,game, bottomCenter); game = newgame
+  }
+
+  def playBR(): Unit = {
+    val newgame = playMoves(BottomRight,game, bottomRight); game = newgame
+  }
 
 }
